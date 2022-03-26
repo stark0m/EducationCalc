@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_keyboard">5dp</dimen>
-    <dimen name="calc_button_text_size">15sp</dimen>
+    <dimen name="calc_button_text_size">45sp</dimen>
+    <dimen name="calc_result_size">55sp</dimen>
 </resources>
