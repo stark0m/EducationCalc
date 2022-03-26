@@ -4,8 +4,15 @@ public class CalcActionAndResult {
 
     private ActionEnum currentAction ;
 
+    protected StringBuilder currentStringValue = new StringBuilder();
     float currentValue = 0;
 
+    public CalcActionAndResult(ActionEnum currentAction) {
+        this.currentAction = currentAction;
+    }
+    public CalcActionAndResult() {
+        this.currentAction = ActionEnum.EMPTY;
+    }
 
     public void setAction(ActionEnum value){
         currentAction = value;
@@ -32,9 +39,9 @@ public class CalcActionAndResult {
 
         switch (currentAction){
             case PLUS:return plus(num);
-            case Minus: return minus(num);
-            case Multiply: return  miltiply(num);
-            case Divide: return divide(num);
+            case MINUS: return minus(num);
+            case MULTIPLY: return  miltiply(num);
+            case DIVIDE: return divide(num);
             default: return 0;
         }
     }
@@ -45,7 +52,7 @@ public class CalcActionAndResult {
     }
 }
 enum ActionEnum {
-    PLUS("+"),Minus("-"), Multiply("*"),Divide("/");
+    PLUS("+"), MINUS("-"), MULTIPLY("*"), DIVIDE("/"),EMPTY(""),RESULT("=");
     String value;
 
     ActionEnum(String value) {

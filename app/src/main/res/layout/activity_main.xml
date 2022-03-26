@@ -9,6 +9,7 @@
 android:background="@mipmap/calc_background_vertical"
 >
     <TextView
+        android:id="@+id/calc_result"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/calc_keyboard_grid_layout"
