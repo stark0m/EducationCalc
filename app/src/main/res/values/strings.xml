@@ -16,4 +16,5 @@
     <string name="key_dot">.</string>
     <string name="key_divide">/</string>
     <string name="key_return">=</string>
+    <string name="calc_value">0</string>
 </resources>

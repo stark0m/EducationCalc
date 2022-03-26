@@ -4,13 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+android:background="@mipmap/calc_background_vertical"
+>
+    <TextView
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/calc_keyboard_grid_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calc_value"
+        android:textColor="@color/white"
+        android:textSize="@dimen/calc_result_size"/>
 
 
     <GridLayout
-
-        android:layout_width="377dp"
+        android:id="@+id/calc_keyboard_grid_layout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:columnCount="4"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,6 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
+            android:layout_marginStart="@dimen/margin_keyboard"
             android:layout_marginEnd="@dimen/margin_keyboard"
             android:backgroundTint="@color/calc_gray"
             android:text="@string/key_four"
@@ -106,6 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
+            android:layout_marginStart="@dimen/margin_keyboard"
             android:layout_marginEnd="@dimen/margin_keyboard"
             android:backgroundTint="@color/calc_gray"
             android:text="@string/key_seven"
@@ -147,6 +161,7 @@
             android:layout_height="wrap_content"
             android:layout_columnSpan="2"
             android:layout_columnWeight="2"
+            android:layout_marginStart="@dimen/margin_keyboard"
             android:layout_marginEnd="@dimen/margin_keyboard"
             android:backgroundTint="@color/calc_gray"
             android:text="@string/key_zero"
@@ -178,6 +193,7 @@
             android:layout_height="wrap_content"
             android:layout_columnSpan="4"
             android:layout_columnWeight="4"
+            android:layout_marginStart="@dimen/margin_keyboard"
             android:layout_marginEnd="@dimen/margin_keyboard"
             android:backgroundTint="@color/orange_calc"
             android:text="@string/key_return"
