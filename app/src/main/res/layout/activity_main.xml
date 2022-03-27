@@ -51,137 +51,122 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/key_one"
-            style="@style/ButtonNumber"
+            style="@style/ButtonAction.Number"
             android:text="@string/key_one"
+            app:cornerRadius="@dimen/buttonCornerRadius" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_two"
+            style="@style/ButtonAction.Number"
+            android:text="@string/key_two"
+            app:cornerRadius="@dimen/buttonCornerRadius"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_three"
+            style="@style/ButtonAction.Number"
+            android:text="@string/key_three"
+            app:cornerRadius="@dimen/buttonCornerRadius"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_plus"
+            style="@style/ButtonAction"
+            android:text="@string/key_plus"
+            app:cornerRadius="@dimen/buttonCornerRadius"
+            />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_four"
+            style="@style/ButtonAction.Number"
+            android:text="@string/key_four"
+            app:cornerRadius="@dimen/buttonCornerRadius"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_five"
+            style="@style/ButtonAction.Number"
+            android:text="@string/key_five"
+            app:cornerRadius="@dimen/buttonCornerRadius"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_six"
+            style="@style/ButtonAction.Number"
+            android:text="@string/key_six"
+            app:cornerRadius="@dimen/buttonCornerRadius"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_minus"
+            style="@style/ButtonAction"
+            android:text="@string/key_minus"
+            app:cornerRadius="@dimen/buttonCornerRadius"
+           />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_seven"
+            style="@style/ButtonAction.Number"
+            android:text="@string/key_seven"
+            app:cornerRadius="@dimen/buttonCornerRadius"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_eight"
+            style="@style/ButtonAction.Number"
+            android:text="@string/key_eight"
+            app:cornerRadius="@dimen/buttonCornerRadius"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_nine"
+            style="@style/ButtonAction.Number"
+            android:text="@string/key_nine"
+            app:cornerRadius="@dimen/buttonCornerRadius"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_multiply"
+            style="@style/ButtonAction"
+            android:text="@string/key_multiply"
+            app:cornerRadius="@dimen/buttonCornerRadius"
+
+             />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_zero"
+            style="@style/ButtonAction.Number"
+            android:backgroundTint="@color/calc_gray"
+            android:text="@string/key_zero"
+            app:cornerRadius="@dimen/buttonCornerRadius"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_dot"
+            style="@style/ButtonAction"
+            android:text="@string/key_dot"
+            app:cornerRadius="@dimen/buttonCornerRadius"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_clear"
+            style="@style/ButtonAction"
+            android:text="@string/key_clear"
+            app:cornerRadius="@dimen/buttonCornerRadius"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key_divide"
+            style="@style/ButtonAction"
+
+
+            android:text="@string/key_divide"
             app:cornerRadius="@dimen/buttonCornerRadius"/>
 
 
-        <Button
-            android:id="@+id/key_two"
-            style="@style/ButtonNumber"
-            android:text="@string/key_two"
-             />
-
-        <Button
-            android:id="@+id/key_three"
-            style="@style/ButtonNumber"
-            android:text="@string/key_three"
-             />
-
-        <Button
-            android:id="@+id/key_plus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginEnd="@dimen/margin_keyboard"
-            android:backgroundTint="@color/orange_calc"
-            android:text="@string/key_plus"
-            android:textSize="@dimen/calc_button_text_size" />
-
-
-        <Button
-            android:id="@+id/key_four"
-            style="@style/ButtonNumber"
-            android:text="@string/key_four"
-            />
-
-        <Button
-            android:id="@+id/key_five"
-            style="@style/ButtonNumber"
-            android:text="@string/key_five"
-             />
-
-        <Button
-            android:id="@+id/key_six"
-            style="@style/ButtonNumber"
-            android:text="@string/key_six"
-             />
-
-        <Button
-            android:id="@+id/key_minus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginEnd="@dimen/margin_keyboard"
-            android:backgroundTint="@color/orange_calc"
-            android:text="@string/key_minus"
-            android:textSize="@dimen/calc_button_text_size" />
-
-        <Button
-            android:id="@+id/key_seven"
-            style="@style/ButtonNumber"
-            android:text="@string/key_seven"
-            />
-
-        <Button
-            android:id="@+id/key_eight"
-            style="@style/ButtonNumber"
-            android:text="@string/key_eight"
-            />
-
-        <Button
-            android:id="@+id/key_nine"
-            style="@style/ButtonNumber"
-            android:text="@string/key_nine"
-             />
-
-        <Button
-            android:id="@+id/key_multiply"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginEnd="@dimen/margin_keyboard"
-            android:backgroundTint="@color/orange_calc"
-            android:text="@string/key_multiply"
-            android:textSize="@dimen/calc_button_text_size" />
-
-        <Button
-            android:id="@+id/key_zero"
-            style="@style/ButtonNumber"
-            android:backgroundTint="@color/calc_gray"
-            android:text="@string/key_zero"
-            />
-
-        <Button
-            android:id="@+id/key_dot"
-            style="@style/ButtonNumber"
-            android:text="@string/key_dot"
-            />
-
-        <Button
-            android:id="@+id/key_clear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginEnd="@dimen/margin_keyboard"
-            android:backgroundTint="@color/orange_calc"
-            android:text="@string/key_clear"
-            android:textSize="@dimen/calc_button_text_size" />
-
-        <Button
-            android:id="@+id/key_divide"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:layout_marginEnd="@dimen/margin_keyboard"
-            android:backgroundTint="@color/orange_calc"
-            android:text="@string/key_divide"
-            android:textSize="@dimen/calc_button_text_size" />
-
-
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/key_return"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/ButtonAction"
             android:layout_columnSpan="4"
             android:layout_columnWeight="4"
             android:layout_marginStart="@dimen/margin_keyboard"
-            android:layout_marginEnd="@dimen/margin_keyboard"
-            android:backgroundTint="@color/orange_calc"
+
             android:text="@string/key_return"
-            android:textSize="@dimen/calc_button_text_size" />
+            app:cornerRadius="@dimen/buttonCornerRadius"
+             />
     </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
