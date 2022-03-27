@@ -3,7 +3,7 @@ package com.example.educationcalc;
 public class CalcActionAndResult {
 
     private String intermediateAction ="" ;
-    private float intermediateValue = 0;
+    private Float intermediateValue ;
     private boolean lastActionCalculation = false;
 
     public boolean isLastActionCalculation() {
@@ -26,25 +26,25 @@ public class CalcActionAndResult {
     public void setAction(String value){
         intermediateAction = value;
     }
-    private float plus(float num){
+    private Float plus(float num){
        return intermediateValue +num;
 
     }
 
-    private float minus(float num){
+    private Float minus(float num){
         return intermediateValue -num;
 
     }
-    private float miltiply(float num){
+    private Float miltiply(float num){
         return intermediateValue *num;
 
     }
-    public float divide(float num){
+    public Float divide(float num){
         return intermediateValue /num;
 
     }
 
-    public float action(float num){
+    public Float action(float num){
 
 
         switch (intermediateAction){
@@ -67,10 +67,10 @@ public class CalcActionAndResult {
         return intermediateAction;
     }
 
-    public float getIntermediateValue() {
+    public Float getIntermediateValue() {
         return intermediateValue;
     }
-    public void setIntermediateValue(float value) {
+    public void setIntermediateValue(Float value) {
         this.intermediateValue=value;
     }
 }

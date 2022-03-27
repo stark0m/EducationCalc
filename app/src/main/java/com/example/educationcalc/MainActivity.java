@@ -22,10 +22,16 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Result", calcActionAndResult.toString());
         TextView intermediateAction = findViewById(R.id.intermediate_action_value);
 
+        if (calcActionAndResult.getIntermediateAction()==""){
+            intermediateValue.setText("");
+            intermediateAction.setText("");
 
+        }else {
+            intermediateValue.setText(String.valueOf(calcActionAndResult.getIntermediateValue()));
+            intermediateAction.setText(calcActionAndResult.getIntermediateAction());
+        }
         textViewResult.setText(calcActionAndResult.currentStringValue.toString());
-        intermediateValue.setText(String.valueOf(calcActionAndResult.getIntermediateValue()));
-        intermediateAction.setText(calcActionAndResult.getIntermediateAction());
+
 
     }
 
@@ -66,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
                 Button currentClickedButton = (Button) findViewById(v.getId());
                 String currentButtonAction = currentClickedButton.getText().toString();
                 //  float currentCalcFloatValue = Float.valueOf(intermediateValue.getText().toString());
-                float currentCalcFloatValue = Float.valueOf(textViewResult.getText().toString());
-                float intermediateFloatValue = calcActionAndResult.getIntermediateValue();
+                Float currentCalcFloatValue = Float.valueOf(textViewResult.getText().toString());
+                Float intermediateFloatValue = calcActionAndResult.getIntermediateValue();
                 String intermediateStringAction = calcActionAndResult.getIntermediateAction();
 
                 if (currentButtonAction.equals(CALC_CLEAR_VALUE)) {  // pressed Clear button
@@ -76,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (intermediateFloatValue == 0) { // number entered first time
+                if (intermediateFloatValue == null) { // number entered first time
                     if (currentClickedButton.getText().equals(CALC_RETURN_VALUE)) { //pressed = button
                         return;
                     }
@@ -95,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 //                        calcActionAndResult = new CalcActionAndResult();
 //                        calcActionAndResult.currentStringValue = new StringBuilder(String.valueOf(currentCalcFloatValue));
                         calcActionAndResult.setAction("");
-                        calcActionAndResult.setIntermediateValue(0);
+                        calcActionAndResult.setIntermediateValue(null);
                         updateInfo();
                         return;
                     }
