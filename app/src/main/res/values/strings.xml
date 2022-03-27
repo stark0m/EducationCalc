@@ -17,4 +17,5 @@
     <string name="key_divide">/</string>
     <string name="key_return">=</string>
     <string name="calc_value">0</string>
+    <string name="key_clear">C</string>
 </resources>

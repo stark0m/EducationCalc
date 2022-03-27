@@ -4,21 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    android:background="@mipmap/calc_background_vertical"
     android:orientation="vertical"
-android:background="@mipmap/calc_background_vertical"
->
+    tools:context=".MainActivity">
+
     <TextView
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/calc_keyboard_grid_layout"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/calc_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/calc_value"
         android:textColor="@color/white"
-        android:textSize="@dimen/calc_result_size"/>
+        android:textSize="@dimen/calc_result_size"
+        app:layout_constraintBottom_toTopOf="@id/calc_keyboard_grid_layout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+
+    <TextView
+        android:id="@+id/intermediate_value_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_corner_action_value"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/calc_button_text_size"
+        tools:text="12345"/>
+    <TextView
+        android:id="@+id/intermediate_action_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/intermediate_value_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/calc_button_text_size"
+        android:layout_marginEnd="@dimen/margin_corner_action_value"
+        tools:text="%"/>
 
     <GridLayout
         android:id="@+id/calc_keyboard_grid_layout"
@@ -159,8 +179,8 @@ android:background="@mipmap/calc_background_vertical"
             android:id="@+id/key_zero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_columnSpan="2"
-            android:layout_columnWeight="2"
+            android:layout_columnSpan="1"
+            android:layout_columnWeight="1"
             android:layout_marginStart="@dimen/margin_keyboard"
             android:layout_marginEnd="@dimen/margin_keyboard"
             android:backgroundTint="@color/calc_gray"
@@ -178,6 +198,16 @@ android:background="@mipmap/calc_background_vertical"
             android:textSize="@dimen/calc_button_text_size" />
 
         <Button
+            android:id="@+id/key_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:layout_marginEnd="@dimen/margin_keyboard"
+            android:backgroundTint="@color/orange_calc"
+            android:text="@string/key_clear"
+            android:textSize="@dimen/calc_button_text_size" />
+
+        <Button
             android:id="@+id/key_divide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -186,6 +216,7 @@ android:background="@mipmap/calc_background_vertical"
             android:backgroundTint="@color/orange_calc"
             android:text="@string/key_divide"
             android:textSize="@dimen/calc_button_text_size" />
+
 
         <Button
             android:id="@+id/key_return"
