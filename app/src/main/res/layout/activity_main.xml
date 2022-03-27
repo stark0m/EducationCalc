@@ -54,7 +54,8 @@
         <Button
             android:id="@+id/key_one"
             style="@style/ButtonNumber"
-            android:text="@string/key_one" />
+            android:text="@string/key_one"
+            app:cornerRadius="@dimen/buttonCornerRadius"/>
 
 
         <Button
