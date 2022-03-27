@@ -2,60 +2,75 @@ package com.example.educationcalc;
 
 public class CalcActionAndResult {
 
-    private ActionEnum currentAction ;
+    private String intermediateAction ="" ;
+    private float intermediateValue = 0;
+    private boolean lastActionCalculation = false;
 
-    protected StringBuilder currentStringValue = new StringBuilder();
-    float currentValue = 0;
-
-    public CalcActionAndResult(ActionEnum currentAction) {
-        this.currentAction = currentAction;
+    public boolean isLastActionCalculation() {
+        return lastActionCalculation;
     }
+
+    public void setLastActionCalculation(boolean lastActionCalculation) {
+        this.lastActionCalculation = lastActionCalculation;
+    }
+
+    protected StringBuilder currentStringValue;
+
+
+
     public CalcActionAndResult() {
-        this.currentAction = ActionEnum.EMPTY;
+        currentStringValue = new StringBuilder("0");
+        this.intermediateAction = "";
     }
 
-    public void setAction(ActionEnum value){
-        currentAction = value;
+    public void setAction(String value){
+        intermediateAction = value;
     }
     private float plus(float num){
-       return currentValue+num;
+       return intermediateValue +num;
 
     }
 
     private float minus(float num){
-        return currentValue-num;
+        return intermediateValue -num;
 
     }
     private float miltiply(float num){
-        return currentValue*num;
+        return intermediateValue *num;
 
     }
     public float divide(float num){
-        return currentValue/num;
+        return intermediateValue /num;
 
     }
 
     public float action(float num){
 
-        switch (currentAction){
-            case PLUS:return plus(num);
-            case MINUS: return minus(num);
-            case MULTIPLY: return  miltiply(num);
-            case DIVIDE: return divide(num);
-            default: return 0;
+
+        switch (intermediateAction){
+            case "+":return plus(num);
+            case "-": return minus(num);
+            case "*": return  miltiply(num);
+            case "/": return divide(num);
+            default: return this.getIntermediateValue();
         }
     }
 
+
+
     @Override
     public String toString() {
-        return currentValue +currentAction.value;
+        return intermediateValue + intermediateAction;
     }
-}
-enum ActionEnum {
-    PLUS("+"), MINUS("-"), MULTIPLY("*"), DIVIDE("/"),EMPTY(""),RESULT("=");
-    String value;
 
-    ActionEnum(String value) {
-        this.value = value;
+    public String getIntermediateAction() {
+        return intermediateAction;
+    }
+
+    public float getIntermediateValue() {
+        return intermediateValue;
+    }
+    public void setIntermediateValue(float value) {
+        this.intermediateValue=value;
     }
 }

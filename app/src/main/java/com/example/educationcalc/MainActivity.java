@@ -9,32 +9,53 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView textViewResult ;
+    private TextView textViewResult;
+    private TextView intermediateValue;
+    private TextView intermediateAction;
+    private final String CALC_CLEAR_VALUE = "C";
+    private final String CALC_RETURN_VALUE = "=";
     private CalcActionAndResult calcActionAndResult = new CalcActionAndResult();
-    private void updateInfo(){
+
+    private void updateInfo() {
 
 
-        Log.d("Result",calcActionAndResult.toString());
-        textViewResult.setText( calcActionAndResult.currentStringValue.toString());
+        Log.d("Result", calcActionAndResult.toString());
+        TextView intermediateAction = findViewById(R.id.intermediate_action_value);
 
+
+        textViewResult.setText(calcActionAndResult.currentStringValue.toString());
+        intermediateValue.setText(String.valueOf(calcActionAndResult.getIntermediateValue()));
+        intermediateAction.setText(calcActionAndResult.getIntermediateAction());
 
     }
-    private void setCurrentStringAction(Button button, CalcActionAndResult car){
-        car.currentStringValue.append( button.getText());
+
+    private void setCurrentStringAction(Button button, CalcActionAndResult car) {
+
+        car.currentStringValue.append(button.getText());
         updateInfo();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textViewResult = findViewById(R.id.calc_result);
+        intermediateValue = findViewById(R.id.intermediate_value_number);
+        intermediateAction = findViewById(R.id.intermediate_action_value);
         updateInfo();
 
         View.OnClickListener onClickButtonListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button button = (Button) findViewById(v.getId());
-                calcActionAndResult.currentStringValue.append(button.getText());
+                if (calcActionAndResult.currentStringValue.toString().equals("0") || calcActionAndResult.isLastActionCalculation()) {
+                    calcActionAndResult.currentStringValue = new StringBuilder(button.getText());
+                } else {
+
+
+                    calcActionAndResult.currentStringValue.append(button.getText());
+                }
+                calcActionAndResult.setLastActionCalculation(false);
                 updateInfo();
 
             }
@@ -42,34 +63,53 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener onClickActionButtonListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Button button = (Button) findViewById(v.getId());
-                calcActionAndResult.currentValue = Float.valueOf(calcActionAndResult.currentStringValue.toString());
-                calcActionAndResult.currentStringValue.append(button.getText());
+                Button currentClickedButton = (Button) findViewById(v.getId());
+                String currentButtonAction = currentClickedButton.getText().toString();
+                //  float currentCalcFloatValue = Float.valueOf(intermediateValue.getText().toString());
+                float currentCalcFloatValue = Float.valueOf(textViewResult.getText().toString());
+                float intermediateFloatValue = calcActionAndResult.getIntermediateValue();
+                String intermediateStringAction = calcActionAndResult.getIntermediateAction();
+
+                if (currentButtonAction.equals(CALC_CLEAR_VALUE)) {  // pressed Clear button
+                    calcActionAndResult = new CalcActionAndResult();
+                    updateInfo();
+                    return;
+                }
+
+                if (intermediateFloatValue == 0) { // number entered first time
+                    if (currentClickedButton.getText().equals(CALC_RETURN_VALUE)) { //pressed = button
+                        return;
+                    }
+                    calcActionAndResult.setIntermediateValue(currentCalcFloatValue);
+                    calcActionAndResult.setAction(currentButtonAction);
+                    calcActionAndResult.currentStringValue = new StringBuilder("0");
+                } else {
+//                   currentCalcFloatValue = calcActionAndResult.action(currentCalcFloatValue);
+                    float calcResult = calcActionAndResult.action(currentCalcFloatValue);
+                    calcActionAndResult.currentStringValue = new StringBuilder(String.valueOf(calcResult));
+                    calcActionAndResult.setLastActionCalculation(true);
+
+                    if (currentClickedButton.getText().equals(CALC_RETURN_VALUE)) {  // pressed Return button
 
 
-                CharSequence action = button.getText();
-                switch (action.toString()){
-                    case "+": calcActionAndResult.setAction(ActionEnum.PLUS);
-                    case "-": calcActionAndResult.setAction(ActionEnum.MINUS);
+//                        calcActionAndResult = new CalcActionAndResult();
+//                        calcActionAndResult.currentStringValue = new StringBuilder(String.valueOf(currentCalcFloatValue));
+                        calcActionAndResult.setAction("");
+                        calcActionAndResult.setIntermediateValue(0);
+                        updateInfo();
+                        return;
+                    }
+                    calcActionAndResult.setAction(currentButtonAction.toString());
+                    calcActionAndResult.setIntermediateValue(currentCalcFloatValue);
 
-                    case "*": calcActionAndResult.setAction(ActionEnum.MULTIPLY);
-                    case "/": calcActionAndResult.setAction(ActionEnum.DIVIDE);
+//                }
+
+
                 }
                 updateInfo();
-                calcActionAndResult.currentStringValue = new StringBuilder();
-
             }
+
         };
-
-
-        findViewById(R.id.key_return).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textViewResult.setText(String.valueOf(calcActionAndResult.action(5.0f)));
-                calcActionAndResult.currentStringValue = new StringBuilder();
-            }
-        });
-
         Button btnOne = findViewById(R.id.key_one);
         Button btnTwo = findViewById(R.id.key_two);
         Button btnThree = findViewById(R.id.key_three);
@@ -81,12 +121,13 @@ public class MainActivity extends AppCompatActivity {
         Button btnNine = findViewById(R.id.key_nine);
         Button btnZero = findViewById(R.id.key_zero);
         Button btnDot = findViewById(R.id.key_dot);
+        Button btnClear = findViewById(R.id.key_clear);
 
         Button btnPlus = findViewById(R.id.key_plus);
         Button btnMinus = findViewById(R.id.key_minus);
         Button btnMultiply = findViewById(R.id.key_multiply);
         Button btnDivide = findViewById(R.id.key_divide);
-
+        Button btnReturn = findViewById(R.id.key_return);
 
 
         btnOne.setOnClickListener(onClickButtonListener);
@@ -105,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
         btnMinus.setOnClickListener(onClickActionButtonListener);
         btnMultiply.setOnClickListener(onClickActionButtonListener);
         btnDivide.setOnClickListener(onClickActionButtonListener);
+        btnClear.setOnClickListener(onClickActionButtonListener);
+        btnReturn.setOnClickListener(onClickActionButtonListener);
 
     }
 
